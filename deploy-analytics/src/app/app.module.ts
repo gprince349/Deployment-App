@@ -7,17 +7,23 @@ import { NavComponent } from './nav/nav.component';
 import { PowerBIComponent } from './powerbi/powerbi.component';
 import { appRoutes } from './routes';
 
+import { DataService, D3Component, BarchartComponent, PieChartComponent, ScatterplotComponent } from './d3/index'
+
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    PowerBIComponent
+    PowerBIComponent,
+    D3Component,
+    BarchartComponent,
+    PieChartComponent,
+    ScatterplotComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

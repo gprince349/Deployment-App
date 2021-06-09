@@ -1,0 +1,27 @@
+<div>
+    <h3>Data</h3>
+    <table>
+        <tr>
+            <th>Framework</th>
+            <th>Stars</th>
+            <th>Released</th>
+        </tr>
+        <tr *ngFor = "let obj of data">
+            <td>{{ obj.Framework }}</td>
+            <td>{{ obj.Stars }}</td>
+            <td>{{ obj.Released }}</td>
+        </tr>
+    </table>
+</div>
+<div>
+    <h3>Bar Chart</h3>
+    <bar-chart [data] = "data"></bar-chart>
+</div>
+<div>
+    <h3>Pie Chart</h3>
+    <pie-chart [data] = "data"></pie-chart>
+</div>
+<div>
+    <h3>Scatter Plot</h3>
+    <scatter-plot [data] = "data"></scatter-plot>
+</div>
