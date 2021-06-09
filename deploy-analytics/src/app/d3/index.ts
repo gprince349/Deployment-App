@@ -1,0 +1,5 @@
+export * from './barchart/barchart.component'
+export * from './d3.component'
+export * from './data.service'
+export * from './piechart/piechart.component'
+export * from './scatterplot/scatterplot.component'
