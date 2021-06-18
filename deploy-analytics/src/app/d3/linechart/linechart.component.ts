@@ -66,12 +66,27 @@ export class LineChartComponent {
             .attr("transform", "translate(0," + height + ")")
             .call(d3.axisBottom(x))
 
+        this.svg.append("text")
+        .attr("class", "x label")
+        .attr("text-anchor", "end")
+        .attr("x", width)
+        .attr("y", height - 6)
+        .text("Time Line");
+
         var y = d3.scaleLinear()
             .domain([0, d3.max(this.data, function(d) { return +d.value; })])
             .range([ height, 0 ]);
-        
+          
         this.svg.append("g")
             .call(d3.axisLeft(y));
+
+        this.svg.append("text")
+        .attr("class", "y label")
+        .attr("text-anchor", "end")
+        .attr("y", 6)
+        .attr("dy", ".75em")
+        .attr("transform", "rotate(-90)")
+        .text("Stage Number");
 
         this.svg.append("path")
         .datum(this.data)
