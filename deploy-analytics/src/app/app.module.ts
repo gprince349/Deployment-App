@@ -9,6 +9,9 @@ import { PowerBIComponent } from './powerbi/powerbi.component';
 import { appRoutes } from './routes';
 
 import { DataService, D3Component, BarchartComponent, PieChartComponent, ScatterplotComponent } from './d3/index'
+import { Error404Component } from './errors/error.component';
+import { TokenService } from './powerbi/token.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,13 +22,19 @@ import { DataService, D3Component, BarchartComponent, PieChartComponent, Scatter
     BarchartComponent,
     PieChartComponent,
     ScatterplotComponent,
-    HomeComponent
+    HomeComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
+
   ],
-  providers: [DataService],
+  providers: [
+    DataService,
+    TokenService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
