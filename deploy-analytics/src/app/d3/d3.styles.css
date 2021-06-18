@@ -13,3 +13,14 @@ table {
   tr:nth-child(even) {
     background-color: #dddddd;
   }
+
+.center-bold {
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+.line {
+  border: 5px solid #00994C;
+  border-radius: 5px;
+}

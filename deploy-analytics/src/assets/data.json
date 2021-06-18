@@ -1,0 +1,110 @@
+{
+    "accounts": [
+        {
+            "BillingAccountName": "Portal Training BA",
+            "subAccounts": [
+                {
+                    "BillingID": "PORTAL-TRAINING-BA",
+                    "ContractType": "Cloud Contract",
+                    "ContractPurpose": "Internal_Test/Dev",
+                    "ContractID": "2R61WBWVNY",
+                    "Country": "INDIA",
+                    "Deployment": "Not Available",
+                    "Status": "New"
+                }
+            ]
+        },
+        {
+            "BillingAccountName": "SIS E-COMMERCE US01",
+            "subAccounts": [
+                {
+                    "BillingID": "1-1MKZSF7_051b4cbbfd0a4d1b8d38f329a7f728df",
+                    "ContractType": "Cloud Contract",
+                    "ContractPurpose": "NOT_DEFINED",
+                    "ContractID": "X-00S9C2",
+                    "Country": "UNITED STATES",
+                    "Deployment": "PTS",
+                    "Status": "InProgress",
+                    "StageGate1": "2021-01-04 01:53:06.211786 +0000 UTC",
+                    "StageGate2": "2021-02-11 01:58:04 +0000 UTC",
+                    "StageGate3": "2021-04-22 02:36:02 +0000 UTC",
+                    "StageGate4": "2021-06-04 02:44:20 +0000 UTC"
+                }
+            ]
+        },
+        {
+            "BillingAccountName": "SLB Digital R&D",
+            "subAccounts": [
+                {
+                    "BillingID": "DIGITAL2020",
+                    "ContractType": "Cloud Contract",
+                    "ContractPurpose": "Internal_Test/Dev",
+                    "ContractID": "PUTC-2502439O40-35696520DATLAKE",
+                    "Country": "INDIA",
+                    "Deployment": "Not Available",
+                    "Status": "New"
+                }
+            ]
+        },
+        {
+            "BillingAccountName": "SLB non-DELFI",
+            "subAccounts": [
+                {
+                    "BillingID": "SLBNONDELFI",
+                    "ContractType": "Cloud Contract",
+                    "ContractPurpose": "Internal_Test/Dev",
+                    "ContractID": "2T2908BWZ4",
+                    "Country": "UNITED STATES",
+                    "Deployment": "Not Available",
+                    "Status": "New"
+                },
+                {
+                    "BillingID": "SLBNONDELFI",
+                    "ContractType": "Cloud Contract",
+                    "ContractPurpose": "Internal_Test/Dev",
+                    "ContractID": "2T1A2EMSQF",
+                    "Country": "NETHERLANDS",
+                    "Deployment": "Not Available",
+                    "Status": "New"
+                }
+            ]
+        },
+        {
+            "BillingAccountName": "FLOOR_WORKS",
+            "subAccounts": [
+                {
+                    "BillingID": "FLOOR_WORKS",
+                    "ContractType": "Cloud Contract",
+                    "ContractPurpose": "Internal_Test/Dev",
+                    "ContractID": "2T1DJQZQN3",
+                    "Country": "INDIA",
+                    "Deployment": "Not Available",
+                    "Status": "New"
+                }
+            ]
+        },
+        {
+            "BillingAccountName": "pallavi_billing_acc",
+            "subAccounts": [
+                {
+                    "BillingID": "2Q9YG8A7XQ",
+                    "ContractType": "Cloud Contract",
+                    "ContractPurpose": "External_Commercial",
+                    "ContractID": "2T1D9029NB",
+                    "Country": "MONACO",
+                    "Deployment": "Not Available",
+                    "Status": "New"
+                },
+                {
+                    "BillingID": "2Q9YG8A7XQ",
+                    "ContractType": "Cloud Contract",
+                    "ContractPurpose": "External_Commercial",
+                    "ContractID": "2T14K4NHQ5",
+                    "Country": "INDIA",
+                    "Deployment": "Not Available",
+                    "Status": "New"
+                }
+            ]
+        }
+    ]
+}
