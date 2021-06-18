@@ -1,27 +1,25 @@
-<div>
-    <h3>Data</h3>
-    <table>
-        <tr>
-            <th>Framework</th>
-            <th>Stars</th>
-            <th>Released</th>
-        </tr>
-        <tr *ngFor = "let obj of data">
-            <td>{{ obj.Framework }}</td>
-            <td>{{ obj.Stars }}</td>
-            <td>{{ obj.Released }}</td>
-        </tr>
-    </table>
+<div class="container">
+    <h3 class="center-bold">SELECT BILLING ACCOUNT</h3>
+    
+    <form [formGroup] = "form" (ngSubmit) = "submit()">
+        <div class = "form-group">
+            <label for = "account" style = "margin-bottom: 5px;">Account: </label>
+            <select formControlName = "account" class = "form-control">
+                <option value = '' disabled selected>Select Account</option>
+                <option *ngFor = "let acc of billingAccounts">{{acc}}</option>
+            </select>
+            <div *ngIf = "f.account.touched && f.account.invalid" class = "alert alert-danger">
+                <div *ngIf="f.account.errors.required">Account Name is required.</div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid" style = "margin-top: 10px;">Submit</button>
+
+    </form>
 </div>
-<div>
-    <h3>Bar Chart</h3>
-    <bar-chart [data] = "data"></bar-chart>
-</div>
-<div>
-    <h3>Pie Chart</h3>
-    <pie-chart [data] = "data"></pie-chart>
-</div>
-<div>
-    <h3>Scatter Plot</h3>
-    <scatter-plot [data] = "data"></scatter-plot>
+<br>
+<hr class = "line">
+<disp-acc [billingAccount] = "Qaccount" *ngIf = "isAccountSet"></disp-acc>
+<div class="d-flex justify-content-around">
+    <bar-chart [hidden] = "isAccount"></bar-chart>
+    <dough-chart [hidden] = "isAccount"></dough-chart>
 </div>
