@@ -5,70 +5,79 @@ import { DataService } from '../data.service'
 @Component({
     selector: 'bar-chart',
     template: `
-        <figure id = "bar"></figure>    
-    `
+    <div class = "outset">
+        <h5 class = "center">Clients Per Countries</h5>
+        <div id = "bar"></div>
+    </div>    
+    `,
+    styleUrls : ['./barchart.component.css']
 })
 
 export class BarchartComponent implements OnInit {
-    @Input() data: any
+    data: any
+
     private svg;
-    private margin = 50;
-    private width = 750 - (this.margin * 2);
-    private height = 400 - (this.margin * 2);
+    private margin = {top: 30, right: 30, bottom: 70, left: 60};
+    private width = 360 - this.margin.left - this.margin.right;
+    private height = 450 - this.margin.top - this.margin.bottom;
 
-    constructor (private dataserv : DataService) {
-
-    }
+    constructor (private dataserv : DataService) { }
 
     private createSvg(): void {
-        this.svg = d3.select("figure#bar")
-        .append("svg")
-        .attr("width", this.width + (this.margin * 2))
-        .attr("height", this.height + (this.margin * 2))
-        .append("g")
-        .attr("transform", "translate(" + this.margin + "," + this.margin + ")");
+        this.svg = d3.select("div#bar")
+            .append("svg")
+                .attr("width",this.width + this.margin.left + this.margin.right)
+                .attr("height", this.height + this.margin.top + this.margin.bottom)
+            .append("g")
+                .attr("transform", `translate(${this.margin.left}, ${this.margin.top})`)
     }
 
-    private drawBars(data: any[]): void {
-        
-        // Create the X-axis band scale
+    private drawBars(): void {
+
+        // X axis
         const x = d3.scaleBand()
-        .range([0, this.width])
-        .domain(data.map(d => d.Framework))
-        .padding(0.2);
-    
-        // Draw the X-axis on the DOM
+            .range([0, this.width ])
+            .domain(this.data.map(d => d[0]))
+            .padding(0.2);
         this.svg.append("g")
-        .attr("transform", "translate(0," + this.height + ")")
-        .call(d3.axisBottom(x))
-        .selectAll("text")
-        .attr("transform", "translate(-10,0)rotate(-45)")
-        .style("text-anchor", "end");
-    
-        // Create the Y-axis band scale
+            .attr("transform", `translate(0, ${this.height})`)
+            .call(d3.axisBottom(x))
+            .selectAll("text")
+                .attr("transform","translate(-10,0)rotate(-45)")
+                .style("text-anchor","end")
+        
+        // Add Y axis
         const y = d3.scaleLinear()
-        .domain([0, 200000])
-        .range([this.height, 0]);
-    
-        // Draw the Y-axis on the DOM
+            .domain([0,6])
+            .range([this.height, 0]);
         this.svg.append("g")
-        .call(d3.axisLeft(y));
+            .call(d3.axisLeft(y));
+
+        // Bars
+        this.svg.selectAll("mybar")
+            .data(this.data)
+            .enter()
+            .append("rect")
+                .attr("x",d => x(d[0]))
+                .attr("y", d => y(d[1]))
+                .attr("width", x.bandwidth())
+                .attr("height", d => this.height - y(d[1]))
+                .attr("fill", "#69b3a2")
     
-        // Create and fill the bars
-        this.svg.selectAll("bars")
-        .data(data)
-        .enter()
-        .append("rect")
-        .attr("x", d => x(d.Framework))
-        .attr("y", d => y(d.Stars))
-        .attr("width", x.bandwidth())
-        .attr("height", (d) => this.height - y(d.Stars))
-        .attr("fill", "#d04a35");
+        this.svg.selectAll("rect")
+        .transition()
+        .duration(800)
+        .attr("y", d => y(d[1]))
+        .attr("height", d => this.height - y(d[1]))
+        .delay((d,i) => {return i*100})
+        
     }
+
 
     ngOnInit() {
+        this.data = this.dataserv.getCountryData();
         this.createSvg();
-        this.drawBars(this.data);
+        this.drawBars();
     }
 
 }
