@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"net/http"
 )
@@ -17,5 +18,9 @@ func RegisterControllers() {
 
 func encodeResponseAsJSON(data interface{}, w io.Writer) {
 	enc := json.NewEncoder(w)
-	enc.Encode(data)
+	enc.SetEscapeHTML(false)
+	err := enc.Encode(data)
+	if err != nil {
+		fmt.Print("Error while encoding as JSON", err)
+	}
 }

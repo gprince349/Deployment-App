@@ -1,10 +1,14 @@
 package controllers
 
-var authority string = "https://login.microsoftonline.com/0495f02d-05b1-48ef-b5c0-ab4c61939a26"
-var client_id string = "e3481fd2-89b9-4b88-9882-4b3b87781a58"
-var scopes []string = []string{"https://analysis.windows.net/powerbi/api/.default"}
-var username string = "embedd@ashish349.onmicrosoft.com"
-var password string = "Prince$349"
+var POWERBI_END_POINT string = "https://api.powerbi.com/v1.0/myorg/reports/"
+var AUTH_END_POINT string = "https://login.microsoftonline.com/"
+
+var TENANT_ID string = "0495f02d-05b1-48ef-b5c0-ab4c61939a26"
+var CLIENT_ID string = "e3481fd2-89b9-4b88-9882-4b3b87781a58"
+var SCOPES []string = []string{"https://analysis.windows.net/powerbi/api/.default"}
+var REPORT_ID string = "38d292af-f59b-4130-bb5d-938dfd55eccf"
+var USERNAME string = "embedd@ashish349.onmicrosoft.com"
+var PASSWORD string = "Prince$349"
 
 // var redirect_uri string = "redirect uri registered on the portal"
 // var code_challenge string = "transformed code verifier from PKCE"

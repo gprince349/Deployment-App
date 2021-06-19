@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import * as pbi from 'powerbi-client';
-import { embedReportId, embedUrl } from "../../config";
+// import { embedReportId, embedUrl } from "../../config";
 import { TokenService } from "./token.service";
 
 
@@ -21,9 +21,12 @@ export class PowerBIComponent implements OnInit{
     
     getToken(){
         this.tokenService.getAccessToken().subscribe((res)=>{
-            let response = res["AccessToken"]
-            let accessToken = response
-            this.showReport(accessToken)
+            let accessToken = res["AccessToken"]
+            let embedReportId = res["ReportId"]
+            console.log(embedReportId)
+            let embedUrl = res["EmbedUrl"]
+            console.log(embedUrl)
+            this.showReport(accessToken, embedReportId, embedUrl)
         }, (error)=>{
             console.log(error)
         })
@@ -34,7 +37,7 @@ export class PowerBIComponent implements OnInit{
         this.getToken();  
     }
     
-    showReport(accessToken) {  
+    showReport(accessToken,embedReportId,embedUrl) {  
         // Embed URL    
         //let embedUrl = "https://api.powerbi.com/v1.0/myorg/" + "63a5bb20-0115-43b8-a9a2-607d78eb07ba" + "&groupId=" + "14ecd494-8f09-4e33-b2b1-21ab7e2b9c9e" ;  
         // embedUrl;
