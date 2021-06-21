@@ -66,38 +66,33 @@ export class DoughnutChartComponent  implements OnInit {
             .style("opacity", 0.7)
 
         this.svg
-            .selectAll('allPolylines')
-            .data(data_ready)
-            .enter()
-            .append('polyline')
-                .attr("stroke", "black")
-                .style("fill", "none")
-                .attr("stroke-width", 1)
-                .attr('points', function(d) {
-                var posA = arc.centroid(d) // line insertion in the slice
-                var posB = outerArc.centroid(d) // line break: we use the other arc generator that has been built only for that
-                var posC = outerArc.centroid(d); // Label position = almost the same as posB
-                var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2 // we need the angle to see if the X position will be at the extreme right or extreme left
-                posC[0] = this.radius * 0.95 * (midangle < Math.PI ? 1 : -1); // multiply by 1 or -1 to put it on the right or on the left
-                return [posA, posB, posC]
-            })
-
-        this.svg
-            .selectAll('allLabels')
+            .selectAll('allSlices')
             .data(data_ready)
             .enter()
             .append('text')
-                .text( function(d) { return d.data['0'] } )
-                .attr('transform', function(d) {
-                    var pos = outerArc.centroid(d);
-                    var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2
-                    pos[0] = this.radius * 0.99 * (midangle < Math.PI ? 1 : -1);
-                    return 'translate(' + pos + ')';
-                })
-                .style('text-anchor', function(d) {
-                    var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2
-                    return (midangle < Math.PI ? 'start' : 'end')
-                })
+            .text(function(d) { return d.data['1']})
+            .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+            .style("text-anchor", "middle")
+            .style("font-size", 17)
+
+        this.svg
+        .selectAll('allSlices')
+        .data(data_ready)
+        .enter()
+        .append('text')
+        .text(function(d) { return d.data['0']})
+        .attr("transform", function(d) { return "translate(" + outerArc.centroid(d) + ")"; })
+        .style("text-anchor", "middle")
+        .style("font-size", 17)
+
+        // this.svg.append("circle").attr("cx",200).attr("cy",130).attr("r", 6).style("fill", "#1b9e77")
+        // this.svg.append("circle").attr("cx",200).attr("cy",130).attr("r", 6).style("fill", "#d95f02")
+        // this.svg.append("circle").attr("cx",200).attr("cy",160).attr("r", 6).style("fill", "#7570b3")
+        // this.svg.append("text").attr("x", 220).attr("y", 130).text("INTERNAL TEST/DEV").style("font-size", "15px").attr("alignment-baseline","middle")
+        // this.svg.append("text").attr("x", 220).attr("y", 130).text("NOT DEFINED").style("font-size", "15px").attr("alignment-baseline","middle")
+        // this.svg.append("text").attr("x", 220).attr("y", 160).text("EXTERNAL COMMERCIAL ").style("font-size", "15px").attr("alignment-baseline","middle")
+
+            
           
     }
 
