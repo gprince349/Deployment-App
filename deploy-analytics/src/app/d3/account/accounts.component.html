@@ -1,0 +1,55 @@
+
+<div class="container">
+    <div class="row align-items-start">
+        <div class="col-md-9" >
+            <div class="map-frame">
+                <div id="map"></div>
+            </div>
+        </div>
+        <div class="col-md-3 dashbox shadow">
+            <h2>Client Info</h2>
+            <h4><b>Name: </b>{{ data.ClientName }}</h4>
+            <h4><b>Total Contracts: </b>{{ totalContract }}</h4>
+            <h4><b>Active Contracts: </b>{{ data.ActiveContracts }}</h4>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="row align-items-start">
+        <div class="col-md-3">
+            <div class = "shadow" style="margin-bottom: 15px;">
+                <h2>Contract Purpose</h2>
+                <pie-chart [bId] ="BillingID"></pie-chart>
+            </div>
+            <div class="shadow">
+                <h2>Contract Type</h2>
+                <dough-chart [bid] = "BillingID"></dough-chart>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="shadow" style="margin-bottom: 15px;">
+                <hbar-chart [bid] = "BillingID"></hbar-chart>
+            </div>
+            <div class="shadow" style="padding-bottom: 15px; padding-left: 10px;">
+                <avgtime [bid] = "BillingID"></avgtime>
+            </div>
+        </div>
+        <div class="col-md-2 shadow" style="margin-left: 20px; width: 250px">
+            <h2>Select contract</h2>
+            <form [formGroup] = "form" (ngSubmit) = "submit()">
+                <div class = "form-group">
+                    <label for = "contract">Contract: </label>
+                    <select formControlName = "contract" class = "form-control">
+                        <option value = '' disabled selected>Select Contract ID</option>
+                        <option *ngFor = "let ctr of contractIds">{{ctr}}</option>
+                    </select>
+                    <div *ngIf = "f.contract.touched && f.contract.invalid" class = "alert alert-danger">
+                        <div *ngIf="f.contract.errors.required">Contract ID Name is required.</div>
+                    </div>
+                </div>
+                <button mat-button type="submit" [disabled]="!form.valid" style="margin-top: 10px;">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

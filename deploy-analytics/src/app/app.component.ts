@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+declare let L
 
 @Component({
   selector: 'app-root',

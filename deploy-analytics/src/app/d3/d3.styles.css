@@ -24,3 +24,33 @@ table {
   border: 5px solid #00994C;
   border-radius: 5px;
 }
+
+.gavg {
+    margin-top: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
+    height: 100px;
+    background-color: #bb54ff;
+    color: white;
+    font-weight: bolder;
+    font-size: 26px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 37px;
+    padding-bottom: 37px;
+    border-radius: 7px;
+}
+
+.litext {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+}
+
+.shadow {
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         3px 3px 5px 6px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}

@@ -10,11 +10,18 @@ import { NavComponent } from './nav/nav.component';
 import { PowerBIComponent } from './powerbi/powerbi.component';
 import { appRoutes } from './routes';
 
-import { DataService, D3Component, BarchartComponent, DoughnutChartComponent, LineChartComponent, DisplayAccountComponent} from './d3/index'
+import { DataService, D3Component, DoughnutChartComponent, 
+  LineChartComponent, AccountService, PieChartComponent, AccountComponent, 
+  HBarChartComponent,MarkerService, ContractInfoComponent, AvgStageTimeComponent, 
+  ContractService, DeploymentChartComponent,HeatMapComponent, GlobalAvgStageTime, 
+  GlobalMapComponent,GlobalContractPurpose, GlobalContractType} from './d3/index'
+
 import { Error404Component } from './errors/error.component';
 import { TokenService } from './powerbi/token.service';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import {MatButtonModule} from '@angular/material/button';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -22,12 +29,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     NavComponent,
     PowerBIComponent,
     D3Component,
-    BarchartComponent,
     HomeComponent,
     DoughnutChartComponent,
-    DisplayAccountComponent,
     LineChartComponent,
-    Error404Component
+    Error404Component,
+    AccountComponent,
+    PieChartComponent,
+    HBarChartComponent,
+    ContractInfoComponent,
+    AvgStageTimeComponent,
+    DeploymentChartComponent,
+    HeatMapComponent,
+    GlobalAvgStageTime,
+    GlobalMapComponent,
+    GlobalContractPurpose,
+    GlobalContractType
   ],
   imports: [
     BrowserModule,
@@ -35,11 +51,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatTooltipModule
   ],
   providers: [
     DataService,
-    TokenService
+    TokenService,
+    AccountService,
+    MarkerService,
+    ContractService
   ],
   bootstrap: [AppComponent]
 })

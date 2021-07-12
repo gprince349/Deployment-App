@@ -1,25 +1,61 @@
 <div class="container">
-    <h3 class="center-bold">SELECT BILLING ACCOUNT</h3>
+    <div class="row">
+        <h3 class="center-bold">SELECT BILLING ACCOUNT</h3>
     
-    <form [formGroup] = "form" (ngSubmit) = "submit()">
-        <div class = "form-group">
-            <label for = "account" style = "margin-bottom: 5px;">Account: </label>
-            <select formControlName = "account" class = "form-control">
-                <option value = '' disabled selected>Select Account</option>
-                <option *ngFor = "let acc of billingAccounts">{{acc}}</option>
-            </select>
-            <div *ngIf = "f.account.touched && f.account.invalid" class = "alert alert-danger">
-                <div *ngIf="f.account.errors.required">Account Name is required.</div>
+        <form [formGroup] = "form" (ngSubmit) = "submit()">
+            <div class = "form-group">
+                <label for = "account" style = "margin-bottom: 5px;">Account: </label>
+                <select formControlName = "account" class = "form-control">
+                    <option value = '' disabled selected>Select Account</option>
+                    <option *ngFor = "let acc of billingAccountNames">{{acc}}</option>
+                </select>
+                <div *ngIf = "f.account.touched && f.account.invalid" class = "alert alert-danger">
+                    <div *ngIf="f.account.errors.required">Account Name is required.</div>
+                </div>
             </div>
-        </div>
-        <button class="btn btn-primary" type="submit" [disabled]="!form.valid" style = "margin-top: 10px;">Submit</button>
-
-    </form>
+            <button class="btn btn-primary" type="submit" [disabled]="!form.valid" style = "margin-top: 10px;">Submit</button>
+        </form>
+    </div>
 </div>
 <br>
 <hr class = "line">
-<disp-acc [billingAccount] = "Qaccount" *ngIf = "isAccountSet"></disp-acc>
-<div class="d-flex justify-content-around">
-    <bar-chart [hidden] = "isAccount"></bar-chart>
-    <dough-chart [hidden] = "isAccount"></dough-chart>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 shadow">
+            <g-pie></g-pie>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-5 shadow" >
+            <g-type></g-type>
+        </div>
+    </div>
 </div>
+
+
+<gmap></gmap>
+
+<div class = "row" style="display: flex; flex-direction: row; justify-content: center; margin-top: 50px;">
+    <div style="height: 400px; width: 400px;" class="shadow">
+        <h3 style="text-align: center; font-size: 30px; font-weight: bold;">AVERAGE DEPLOYMENT TIME</h3>
+        <div id = "avgtime" class="gavg" >{{ globalAvgTimeDays }} Days {{ globalAvgTimeHours }} Hours</div>
+    </div>
+    <div style="height: 400px; width: 500px;" class="shadow">
+        <gavg-time></gavg-time>
+    </div>
+</div>
+<div style="display: flex; flex-direction: row; justify-content: center;">
+    <div style="height: 450px; width: 450px; ">
+        <ul style="margin-top: 125px;">
+            <li class="litext"><b>S1 </b>deployment_specs_completed</li>
+            <li class="litext"><b>S2 </b>deployment_started</li>
+            <li class="litext"><b>S3 </b>deployment_ready_for_validation</li>
+            <li class="litext"><b>S4 </b>validation_started</li>
+            <li class="litext"><b>S5 </b>ready_for_onboarding</li>
+            <li class="litext"><b>S6 </b>customer_onboarded</li>
+        </ul>
+    </div>
+    <heat-map></heat-map>
+</div>
+
+    

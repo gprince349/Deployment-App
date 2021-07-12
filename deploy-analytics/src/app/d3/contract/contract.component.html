@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row align-items-start">
+    <div class="col-md-3">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h2 class="card-title">{{ contract.ContractName }}</h2>
+          <h3 class="card-subtitle mb-2 text-muted">{{ contract.ContractID }}</h3>
+          <b>Contract Purpose : </b>{{ contract.ContractInfo.ContractPurpose }}
+          <br>
+          <b>Contract Type : </b>{{ contract.ContractInfo.ContractType }}
+          <br>
+          <b>Country : </b>{{ contract.ContractInfo.CountryName }}
+          <br>
+          <b>Creation Date : </b>{{ contract.CreationDate.split('T')[0] }}
+        </div>
+      </div>
+      <div style="margin-top: 10px;">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <b>Deployment : </b>{{deployment_data.DeploymentName}}
+            <br>
+            <b>Solution : </b>{{deployment_data.Solution}}
+          </div>
+        </div>
+        
+      </div>
+      <div style="margin-top: 15px;">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h2 [ngStyle] = "{'color': (isActive === true) ? '#58b202':'#f09e2e'}">Progress</h2>
+            <div class="progress">
+              <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress_stage + '%'}" aria-valuenow ="progress_stage" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-8">
+      <div style="font-size: 17px; font-weight: 700;">DEPLOYMENT PROGRESS</div>
+      <line-prog [cid] = "cid"></line-prog>
+    </div>
+  </div>
+  <div class="row align-items-start">
+    <div class="col-md-4"></div>
+    <div class="col-md-2">
+      <div class="card">
+        <div class="card-body">
+          <div style="text-align: center;"><b>Most Common Error</b></div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

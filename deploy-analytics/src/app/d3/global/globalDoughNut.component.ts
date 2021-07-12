@@ -1,27 +1,28 @@
-import { Component, Input, OnChanges } from '@angular/core'
+import { Component } from "@angular/core";
+import { DataService } from "../data.service";
 import * as d3 from 'd3'
-import { AccountService } from '../account/account.service' 
 
 @Component({
-    selector: 'dough-chart',
-    template: `
-        <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-        <div id = "dough"></div>  
+    selector:'g-type',
+    template:
+    `   
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <div style = "font-size:15px; font-weight: bolder">Client Distribution over Contract Type</div>
+    <div id = "dough"></div>  
     `,
-    styleUrls: ['./doughnut.component.css']
+    styleUrls: ['./globalDoughNut.component.css']
 })
 
-export class DoughnutChartComponent {
-    @Input() bid = ''
+export class GlobalContractType {
     data: any
     private svg
-    private width = 261
-    private height = 250
-    private margin = 0
+    private width = 500
+    private height = 500
+    private margin = 50
     private radius = Math.min(this.width, this.height) / 2 - this.margin
 
 
-    constructor(private accserv: AccountService) {}
+    constructor(private dataserv: DataService) {}
     private createSvg() : void {
         this.svg = d3.select("#dough")
             .append("svg")
@@ -76,7 +77,7 @@ export class DoughnutChartComponent {
             .style("font-size", 14)        
 
         var legendRectSize = 8;
-        var legendSpacing = 2;
+        var legendSpacing = 5;
         var legend = this.svg.selectAll('.legend')
             .data(color.domain())
             .enter()
@@ -107,13 +108,12 @@ export class DoughnutChartComponent {
           
     }
 
-    ngOnChanges() {
-        this.accserv.getContractType(this.bid).subscribe((data:any) => {
+    ngOnInit() {
+        this.dataserv.getglobalContractType().subscribe((data:any) => {
             this.data = Object.keys(data).map((key) => [key, data[key]]);
             this.createSvg();
             this.create();
         })
     }
-
-
 }
+
